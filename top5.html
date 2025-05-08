@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agent Stats</title>
+    <title>Статистика агентів</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -60,11 +60,29 @@
         td[data-rate^='17'],
         td[data-rate^='18'],
         td[data-rate^='19'] { background-color: #d32f2f; }
-        td[data-rate^='2'],
         td[data-rate='100.00%'] { background-color: #b71c1c; }
+        /* Стиль для кнопки */
+        .back-button {
+            background-color: #003366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .back-button:hover {
+            background-color: #005bb5;
+        }
     </style>
 </head>
 <body>
+    <!-- Кнопка назад -->
+    <a href="index.html" class="back-button">Назад</a>
+    
     <table>
         <thead>
             <tr>
@@ -75,7 +93,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr><td>Olesia Pryimach</td><td>0</td><td>0</td><td data-rate="0.00%">0,00%</td></tr>
+            <!-- Приклад запису -->
+  <tr><td>Olesia Pryimach</td><td>0</td><td>0</td><td data-rate="0.00%">0,00%</td></tr>
   <tr><td>Oksana Kyrychenko</td><td>0</td><td>0</td><td data-rate="0.00%">0,00%</td></tr>
   <tr><td>Halyna Kosharna</td><td>8</td><td>0</td><td data-rate="0.00%">0,00%</td></tr>
   <tr><td>Vafa Oksenenko</td><td>0</td><td>0</td><td data-rate="0.00%">0,00%</td></tr>
@@ -253,6 +272,7 @@
 <tr><td>Kyrylo Bessarab</td><td>2</td><td>1</td><td data-rate="50.00%">50,00%</td></tr>
 <tr><td>Viktor Hlushchenko</td><td>2</td><td>1</td><td data-rate="50.00%">50,00%</td></tr>
 <tr><td>Yuliia Lobanova</td><td>1</td><td>1</td><td data-rate="100.00%">100,00%</td></tr>
+            <!-- Додатково додайте дані -->
         </tbody>
     </table>
 </body>
