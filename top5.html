@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агенты</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .bg-low { background-color: #d9f7be; }
+        .bg-medium { background-color: #ffecb3; }
+        .bg-high { background-color: #ffcdd2; }
+        .bg-critical { background-color: #f44336; color: #fff; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-10">
+        <button onclick="window.location.href='index.html'" class="mb-5 px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700">Назад</button>
+        <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
+            <table class="min-w-full border-collapse text-sm">
+                <thead class="bg-blue-900 text-white">
+                    <tr>
+                        <th class="px-4 py-2 border">Агент</th>
+                        <th class="px-4 py-2 border">Кількість унікальних звернень</th>
+                        <th class="px-4 py-2 border">Кількість повторних звернень</th>
+                        <th class="px-4 py-2 border">Поточний % повторних звернень</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Табличные данные будут вставлены здесь -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
