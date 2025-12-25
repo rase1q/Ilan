@@ -4,7 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Мой сайт</title>
+
+  <!-- amoCRM online chat -->
+  <script>
+    (function(a,m,o,c,r,m){
+      a[m]={
+        id:"439879",
+        hash:"2f127fe277cc494cb7acc0fc955e5bb70935febdc215a0db8da9d7e0dbf2e76d",
+        locale:"ru",
+        inline:true,
+        setMeta:function(p){
+          this.params=(this.params||[]).concat([p])
+        }
+      };
+
+      a[o]=a[o]||function(){
+        (a[o].q=a[o].q||[]).push(arguments)
+      };
+
+      a[o+'Config']=a[o+'Config']||{};
+      a[o+'Config'].hidden = false; // 👈 КНОПКА ВКЛЮЧЕНА
+
+      var d=a.document,
+          s=d.createElement('script');
+      s.async=true;
+      s.id=m+'_script';
+      s.src='https://gso.amocrm.ru/js/button.js';
+      d.head && d.head.appendChild(s);
+    }(window,0,'amoSocialButton',0,0,'amo_social_button'));
+  </script>
 </head>
+
 <body>
   <h1>Привет! Это мой сайт на GitHub Pages</h1>
   <p>Работает ✅</p>
