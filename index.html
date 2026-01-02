@@ -5,11 +5,53 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Мой сайт</title>
 
-  <!-- (Опционально) Поднимем виджеты поверх -->
+  <!-- Разводим виджеты по разным местам (работает для многих, но зависит от того, как каждый сервис рисует кнопку) -->
   <style>
-    /* Часто виджеты могут перекрывать друг друга. Этот стиль помогает, но не гарантирует 100% для всех. */
-    iframe, .chatra--widget, .b24-widget-button-wrapper, #jivo-iframe-container {
+    /* Делаем все виджеты "поверх" страницы */
+    iframe, .chatra--widget, .b24-widget-button-wrapper, .b24-widget-button-block,
+    #jivo-iframe-container, .jivo_widget, #jivo_chat_widget, .jivo-btn {
       z-index: 2147483000 !important;
+    }
+
+    /* 1) Chatra: справа снизу */
+    .chatra--widget {
+      right: 16px !important;
+      left: auto !important;
+      bottom: 16px !important;
+    }
+
+    /* 2) Bitrix24: справа, выше Chatra */
+    .b24-widget-button-wrapper,
+    .b24-widget-button-block {
+      right: 16px !important;
+      left: auto !important;
+      bottom: 96px !important;
+    }
+
+    /* 3) Jivo: слева снизу */
+    #jivo-iframe-container,
+    .jivo_widget,
+    #jivo_chat_widget,
+    .jivo-btn {
+      left: 16px !important;
+      right: auto !important;
+      bottom: 16px !important;
+    }
+
+    /* 4) amoCRM: справа, ещё выше (селекторы зависят от версии — может не сработать) */
+    iframe[src*="amocrm.ru"],
+    iframe[id*="amo"],
+    iframe[name*="amo"] {
+      right: 16px !important;
+      left: auto !important;
+      bottom: 176px !important;
+    }
+
+    /* 5) Chat2Desk: слева, выше Jivo (если iframe содержит chat2desk) */
+    iframe[src*="chat2desk"] {
+      left: 16px !important;
+      right: auto !important;
+      bottom: 96px !important;
     }
   </style>
 </head>
@@ -77,22 +119,22 @@
         d.head.appendChild(s);
       })(document);
 
-      /* ========== 5) Chat2Desk (самый капризный, грузим аккуратно) ========== */
+      /* ========== 5) Chat2Desk ========== */
       (function(){
-        // 5.1. Поддержка IE11 (можно оставить, даже если IE не нужен)
+        // IE11 support (можно оставить)
         var ie = document.createElement("script");
         ie.src = "https://livechat-02.chat2desk.kz/packs/ie-11-support.js";
         ie.async = true;
         document.head.appendChild(ie);
 
-        // 5.2. Конфиг
+        // Config
         window.chat24_token = "7115b894348a4f08ca62476920e2388d";
         window.chat24_url = "https://livechat-02.chat2desk.kz";
         window.chat24_socket_url = "wss://livechat-02.chat2desk.kz/widget_ws_new";
         window.chat24_static_files_domain = "https://storage-02.chat2desk.kz/";
         window.lang = "ru";
 
-        // 5.3. Грузим манифест и основной bundle
+        // Load manifest and bundle
         fetch(window.chat24_url + "/packs/manifest.json?nocache=" + Date.now())
           .then(function(res){ return res.json(); })
           .then(function(data){
@@ -104,7 +146,6 @@
             s.type = "text/javascript";
             s.async = true;
             s.src = window.chat24_url + data["application.js"];
-            s.onload = function(){ console.log("Chat2Desk loaded ✅"); };
             s.onerror = function(){ console.error("Chat2Desk: ошибка загрузки application.js"); };
             document.body.appendChild(s);
           })
@@ -118,8 +159,3 @@
 
 </body>
 </html>
-
-
-
-
-
