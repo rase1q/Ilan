@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="ru">
-  <script>
-    (function(d, w, c) {
-        w.ChatraID = 'XPhAEAZMiuvKnbs8H';
-        var s = d.createElement('script');
-        w[c] = w[c] || function() {
-            (w[c].q = w[c].q || []).push(arguments);
-        };
-        s.async = true;
-        s.src = 'https://call.chatra.io/chatra.js';
-        if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-</script>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Мой сайт</title>
+
+  <!-- Chatra -->
+  <script>
+    (function(d, w, c) {
+      w.ChatraID = 'XPhAEAZMiuvKnbs8H';
+      var s = d.createElement('script');
+      w[c] = w[c] || function() {
+        (w[c].q = w[c].q || []).push(arguments);
+      };
+      s.async = true;
+      s.src = 'https://call.chatra.io/chatra.js';
+      d.head.appendChild(s);
+    })(document, window, 'Chatra');
+  </script>
 
   <!-- amoCRM online chat -->
   <script>
@@ -29,11 +31,9 @@
           this.params=(this.params||[]).concat([p])
         }
       };
-
       a[o]=a[o]||function(){
         (a[o].q=a[o].q||[]).push(arguments)
       };
-
       a[o+'Config']=a[o+'Config']||{};
       a[o+'Config'].hidden = false;
 
@@ -42,7 +42,7 @@
       s.async=true;
       s.id=m+'_script';
       s.src='https://gso.amocrm.ru/js/button.js';
-      d.head && d.head.appendChild(s);
+      d.head.appendChild(s);
     }(window,0,'amoSocialButton',0,0,'amo_social_button'));
   </script>
 </head>
@@ -65,13 +65,13 @@
   <!-- Jivo Chat -->
   <script src="//code.jivo.ru/widget/i0chOJB5IC" async></script>
 
-  <!-- Chat2Desk -->
+  <!-- Chat2Desk (ПРАВИЛЬНО ПОДКЛЮЧЁН) -->
   <script src="https://livechat-02.chat2desk.kz/packs/ie-11-support.js"></script>
   <script>
     window.chat24_token = "7115b894348a4f08ca62476920e2388d";
     window.chat24_url = "https://livechat-02.chat2desk.kz";
     window.chat24_socket_url = "wss://livechat-02.chat2desk.kz/widget_ws_new";
-    window.chat24_static_files_domain = "https://storage-02.chat2desk.kz//";
+    window.chat24_static_files_domain = "https://storage-02.chat2desk.kz/";
     window.lang = "ru";
 
     window.fetch(
@@ -91,4 +91,6 @@
 
 </body>
 </html>
+
+
 
