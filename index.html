@@ -5,92 +5,121 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Мой сайт</title>
 
-  <!-- Chatra -->
-  <script>
-    (function(d, w, c) {
-      w.ChatraID = 'XPhAEAZMiuvKnbs8H';
-      var s = d.createElement('script');
-      w[c] = w[c] || function() {
-        (w[c].q = w[c].q || []).push(arguments);
-      };
-      s.async = true;
-      s.src = 'https://call.chatra.io/chatra.js';
-      d.head.appendChild(s);
-    })(document, window, 'Chatra');
-  </script>
-
-  <!-- amoCRM online chat -->
-  <script>
-    (function(a,m,o,c,r,m){
-      a[m]={
-        id:"439879",
-        hash:"2f127fe277cc494cb7acc0fc955e5bb70935febdc215a0db8da9d7e0dbf2e76d",
-        locale:"ru",
-        inline:true,
-        setMeta:function(p){
-          this.params=(this.params||[]).concat([p])
-        }
-      };
-      a[o]=a[o]||function(){
-        (a[o].q=a[o].q||[]).push(arguments)
-      };
-      a[o+'Config']=a[o+'Config']||{};
-      a[o+'Config'].hidden = false;
-
-      var d=a.document,
-          s=d.createElement('script');
-      s.async=true;
-      s.id=m+'_script';
-      s.src='https://gso.amocrm.ru/js/button.js';
-      d.head.appendChild(s);
-    }(window,0,'amoSocialButton',0,0,'amo_social_button'));
-  </script>
+  <!-- (Опционально) Поднимем виджеты поверх -->
+  <style>
+    /* Часто виджеты могут перекрывать друг друга. Этот стиль помогает, но не гарантирует 100% для всех. */
+    iframe, .chatra--widget, .b24-widget-button-wrapper, #jivo-iframe-container {
+      z-index: 2147483000 !important;
+    }
+  </style>
 </head>
 
 <body>
   <h1></h1>
   <p>Работает ✅</p>
 
-  <!-- Bitrix24 widget -->
   <script>
-    (function(w,d,u){
-      var s=d.createElement('script');
-      s.async=true;
-      s.src=u+'?'+(Date.now()/60000|0);
-      var h=d.getElementsByTagName('script')[0];
-      h.parentNode.insertBefore(s,h);
-    })(window,document,'https://cdn-ru.bitrix24.ru/b36252142/crm/site_button/loader_1_wt0mp1.js');
-  </script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-  <!-- Jivo Chat -->
-  <script src="//code.jivo.ru/widget/i0chOJB5IC" async></script>
+      /* ========== 1) Chatra ========== */
+      (function(d, w, c) {
+        w.ChatraID = 'XPhAEAZMiuvKnbs8H';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+          (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        d.head.appendChild(s);
+      })(document, window, 'Chatra');
 
-  <!-- Chat2Desk (ПРАВИЛЬНО ПОДКЛЮЧЁН) -->
-  <script src="https://livechat-02.chat2desk.kz/packs/ie-11-support.js"></script>
-  <script>
-    window.chat24_token = "7115b894348a4f08ca62476920e2388d";
-    window.chat24_url = "https://livechat-02.chat2desk.kz";
-    window.chat24_socket_url = "wss://livechat-02.chat2desk.kz/widget_ws_new";
-    window.chat24_static_files_domain = "https://storage-02.chat2desk.kz/";
-    window.lang = "ru";
+      /* ========== 2) amoCRM online chat ========== */
+      (function(a,m,o,c,r,m){
+        a[m]={
+          id:"439879",
+          hash:"2f127fe277cc494cb7acc0fc955e5bb70935febdc215a0db8da9d7e0dbf2e76d",
+          locale:"ru",
+          inline:true,
+          setMeta:function(p){
+            this.params=(this.params||[]).concat([p])
+          }
+        };
 
-    window.fetch(
-      window.chat24_url + "/packs/manifest.json?nocache=" + new Date().getTime()
-    )
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (data) {
-      var chat24 = document.createElement("script");
-      chat24.type = "text/javascript";
-      chat24.async = true;
-      chat24.src = window.chat24_url + data["application.js"];
-      document.body.appendChild(chat24);
+        a[o]=a[o]||function(){
+          (a[o].q=a[o].q||[]).push(arguments)
+        };
+
+        a[o+'Config']=a[o+'Config']||{};
+        a[o+'Config'].hidden = false;
+
+        var d=a.document, s=d.createElement('script');
+        s.async=true;
+        s.id=m+'_script';
+        s.src='https://gso.amocrm.ru/js/button.js';
+        d.head && d.head.appendChild(s);
+      }(window,0,'amoSocialButton',0,0,'amo_social_button'));
+
+      /* ========== 3) Bitrix24 widget ========== */
+      (function(w,d,u){
+        var s=d.createElement('script');
+        s.async=true;
+        s.src=u+'?'+(Date.now()/60000|0);
+        var h=d.getElementsByTagName('script')[0] || d.body.firstChild;
+        if (h && h.parentNode) h.parentNode.insertBefore(s,h);
+        else d.body.appendChild(s);
+      })(window,document,'https://cdn-ru.bitrix24.ru/b36252142/crm/site_button/loader_1_wt0mp1.js');
+
+      /* ========== 4) Jivo Chat ========== */
+      (function(d){
+        var s = d.createElement("script");
+        s.async = true;
+        s.src = "//code.jivo.ru/widget/i0chOJB5IC";
+        d.head.appendChild(s);
+      })(document);
+
+      /* ========== 5) Chat2Desk (самый капризный, грузим аккуратно) ========== */
+      (function(){
+        // 5.1. Поддержка IE11 (можно оставить, даже если IE не нужен)
+        var ie = document.createElement("script");
+        ie.src = "https://livechat-02.chat2desk.kz/packs/ie-11-support.js";
+        ie.async = true;
+        document.head.appendChild(ie);
+
+        // 5.2. Конфиг
+        window.chat24_token = "7115b894348a4f08ca62476920e2388d";
+        window.chat24_url = "https://livechat-02.chat2desk.kz";
+        window.chat24_socket_url = "wss://livechat-02.chat2desk.kz/widget_ws_new";
+        window.chat24_static_files_domain = "https://storage-02.chat2desk.kz/";
+        window.lang = "ru";
+
+        // 5.3. Грузим манифест и основной bundle
+        fetch(window.chat24_url + "/packs/manifest.json?nocache=" + Date.now())
+          .then(function(res){ return res.json(); })
+          .then(function(data){
+            if (!data || !data["application.js"]) {
+              console.error("Chat2Desk: manifest без application.js", data);
+              return;
+            }
+            var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = window.chat24_url + data["application.js"];
+            s.onload = function(){ console.log("Chat2Desk loaded ✅"); };
+            s.onerror = function(){ console.error("Chat2Desk: ошибка загрузки application.js"); };
+            document.body.appendChild(s);
+          })
+          .catch(function(e){
+            console.error("Chat2Desk: fetch/manifest error", e);
+          });
+      })();
+
     });
   </script>
 
 </body>
 </html>
+
+
 
 
 
