@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Мой сайт</title>
 
-  <!-- Разводим виджеты по разным местам (работает для многих, но зависит от того, как каждый сервис рисует кнопку) -->
+  <!-- Разводим виджеты по разным местам -->
   <style>
     /* Делаем все виджеты "поверх" страницы */
     iframe, .chatra--widget, .b24-widget-button-wrapper, .b24-widget-button-block,
@@ -38,7 +38,7 @@
       bottom: 16px !important;
     }
 
-    /* 4) amoCRM: справа, ещё выше (селекторы зависят от версии — может не сработать) */
+    /* 4) amoCRM: справа, ещё выше */
     iframe[src*="amocrm.ru"],
     iframe[id*="amo"],
     iframe[name*="amo"] {
@@ -47,18 +47,20 @@
       bottom: 176px !important;
     }
 
-    /* 5) Chat2Desk: слева, выше Jivo (если iframe содержит chat2desk) */
+    /* 5) Chat2Desk: слева, выше Jivo */
     iframe[src*="chat2desk"] {
       left: 16px !important;
       right: auto !important;
       bottom: 96px !important;
     }
   </style>
+
+  <!-- Jivo Chat async -->
   <script src="//code.jivo.ru/widget/ChUC44vQkb" async></script>
 </head>
 
 <body>
-  <h1></h1>
+  <h1>Привет!</h1>
   <p>Работает ✅</p>
 
   <script>
@@ -120,45 +122,34 @@
         d.head.appendChild(s);
       })(document);
 
-      /* ========== 5) Chat2Desk ========== */
+      /* ========== 5) Chat2Desk (новый код) ========== */
       (function(){
-        // IE11 support (можно оставить)
+        // IE11 support
         var ie = document.createElement("script");
-        ie.src = "https://livechat-02.chat2desk.kz/packs/ie-11-support.js";
+        ie.src = "https://livechatv2.chat2desk.com/packs/ie-11-support.js";
         ie.async = true;
         document.head.appendChild(ie);
 
         // Config
-        window.chat24_token = "7115b894348a4f08ca62476920e2388d";
-        window.chat24_url = "https://livechat-02.chat2desk.kz";
-        window.chat24_socket_url = "wss://livechat-02.chat2desk.kz/widget_ws_new";
-        window.chat24_static_files_domain = "https://storage-02.chat2desk.kz/";
+        window.chat24_token = "4b16380170d3ca2769baedc334df8a08";
+        window.chat24_url = "https://livechatv2.chat2desk.com";
+        window.chat24_socket_url = "wss://livechatv2.chat2desk.com/widget_ws_new";
+        window.chat24_static_files_domain = "https://storage.chat2desk.com/";
         window.lang = "ru";
 
         // Load manifest and bundle
         fetch(window.chat24_url + "/packs/manifest.json?nocache=" + Date.now())
           .then(function(res){ return res.json(); })
           .then(function(data){
-            if (!data || !data["application.js"]) {
-              console.error("Chat2Desk: manifest без application.js", data);
-              return;
-            }
-            var s = document.createElement("script");
-            s.type = "text/javascript";
-            s.async = true;
-            s.src = window.chat24_url + data["application.js"];
-            s.onerror = function(){ console.error("Chat2Desk: ошибка загрузки application.js"); };
-            document.body.appendChild(s);
-          })
-          .catch(function(e){
-            console.error("Chat2Desk: fetch/manifest error", e);
+            var chat24 = document.createElement("script");
+            chat24.type = "text/javascript";
+            chat24.async = true;
+            chat24.src = window.chat24_url + data["application.js"];
+            document.body.appendChild(chat24);
           });
       })();
 
     });
   </script>
-<script src="https://livechatv2.chat2desk.com/packs/ie-11-support.js"></script><script>  window.chat24_token = "4b16380170d3ca2769baedc334df8a08";  window.chat24_url = "https://livechatv2.chat2desk.com";  window.chat24_socket_url ="wss://livechatv2.chat2desk.com/widget_ws_new";  window.chat24_static_files_domain = "https://storage.chat2desk.com/";  window.lang = "ru";  window.fetch("".concat(window.chat24_url, "/packs/manifest.json?nocache=").concat(new Date().getTime())).then(function (res) {    return res.json();  }).then(function (data) {    var chat24 = document.createElement("script");    chat24.type = "text/javascript";    chat24.async = true;    chat24.src = "".concat(window.chat24_url).concat(data["application.js"]);    document.body.appendChild(chat24);  });</script>
 </body>
 </html>
-
-
